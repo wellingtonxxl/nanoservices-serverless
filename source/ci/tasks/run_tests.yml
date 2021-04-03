@@ -7,5 +7,10 @@ image_resource:
     repository: node
     tag: latest
 
+inputs:
+  - name: tasks
+
 run:
-  path: source/ci/run_tests.sh
+  path: npm
+  args: ["test"]
+
