@@ -2,21 +2,14 @@
 resources:
 - name: nanoservices
   type: git
-  icon: github
   source:
     uri: https://github.com/wellingtonxxl/nanoservices-serverless
     branch: main
-- name: node-image
-  type: registry-image
-  source:
-    repository: node
-    tag: 13.10.1-stretch
+
 jobs:
-- name: test
-  public: true
-  plan:
-  - get: node-image
-  - get: nanoservices
-    trigger: true
-  - task: run tests
-    file: ci/tasks/run_tests.yml
+  - name: builderman
+    public: true
+    plan:
+      - get: nanoservices
+      - task: run tests
+        file: nanoservices/source/ci/tasks/run_tests.yml
