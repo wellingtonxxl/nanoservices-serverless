@@ -32,7 +32,10 @@ const putObject = (buffer, filename) => {
             if (err){
                 return rej(err);
             }
-            return res(data);
+            return res({
+                bucket: BUCKET,
+                key: 'thumbnail-' + filename
+            });
         })
     }); 
 }
