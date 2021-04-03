@@ -1,0 +1,15 @@
+---
+resources:
+- name: nanoservices
+  type: git
+  icon: github
+  source:
+    uri: https://github.com/wellingtonxxl/nanoservices-serverless
+    branch: main
+
+jobs:
+- name: test
+  plan:
+  - get: nanoservices
+  - task: tests pip
+  file: nanoservices/pipeline/run_tests.yml
